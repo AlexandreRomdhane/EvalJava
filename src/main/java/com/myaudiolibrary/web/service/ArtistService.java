@@ -55,4 +55,8 @@ public class ArtistService {
         artist = artistRepository.save(artist);
         return artist;
     }
+
+    public void deleteArtist(Long id) {
+        artistRepository.deleteById(id);
+    }
 }

@@ -4,6 +4,7 @@ import com.myaudiolibrary.web.model.Artist;
 import com.myaudiolibrary.web.service.ArtistService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -45,16 +46,16 @@ public class ArtistController {
         artist = artistService.createArtist(artist);
         return artist;
     }
-    /*
 
-    // Supression Artist
-    @RequestMapping(value = "", method = RequestMethod.DELETE, params={"id"}, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Artist DeleteArtist(@RequestParam Long id) {
-        Artist deleteArtist = artistService.save();
-        return deleteArtist;
+
+    // Suppression d'album
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void DeleteAlbum(@PathVariable Long id) {
+        artistService.deleteArtist(id);
     }
 
-
+  /*
 
 
     // MAJ Artist
@@ -65,10 +66,5 @@ public class ArtistController {
         return updateArtist;
     }
 
-/*
-    @RequestMapping(method = RequestMethod.POST, value = "", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Artist createArtist(@RequestBody Artist artist) {
-        return artistService.save(artist);
-    }
 */
 }
