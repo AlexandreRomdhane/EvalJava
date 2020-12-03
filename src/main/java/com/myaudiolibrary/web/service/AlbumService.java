@@ -16,7 +16,7 @@ public class AlbumService {
         return album;
     }
 
-    public void deleteAlbum(Album album) {
-        albumRepository.delete(album);
+    public void deleteAlbum(Long id) {
+        albumRepository.deleteById(Math.toIntExact(id));
     }
 }

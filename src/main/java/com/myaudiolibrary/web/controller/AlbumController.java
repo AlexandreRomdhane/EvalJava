@@ -6,6 +6,7 @@ import com.myaudiolibrary.web.repository.AlbumRepository;
 import com.myaudiolibrary.web.repository.ArtistRepository;
 import com.myaudiolibrary.web.service.AlbumService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,8 +25,9 @@ public class AlbumController {
     }
 
     // Suppression d'album
-    @RequestMapping(value = "", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public void DeleteAlbum(@RequestBody Album album) {
-        albumService.deleteAlbum(album);
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void DeleteAlbum(@PathVariable Long id) {
+        albumService.deleteAlbum(id);
     }
 }
