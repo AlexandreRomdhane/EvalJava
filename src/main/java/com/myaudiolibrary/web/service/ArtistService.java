@@ -46,13 +46,13 @@ public class ArtistService {
         return optionalArtist;
     }
 
-    public Artist updateArtist(String name, Long id) {
-        artistRepository.updateArtist(name, id);
+    public Artist updateArtist(Artist artist) {
+        artistRepository.save(artist);
         return null;
     }
 
     public Artist createArtist(Artist artist) {
-        artist = artistRepository.save(artist);
+        artist = artistRepository.updateArtist(artist.getName(), artist.getId());
         return artist;
     }
 

@@ -48,23 +48,20 @@ public class ArtistController {
     }
 
 
-    // Suppression d'album
+    // Suppression d'artist
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void DeleteAlbum(@PathVariable Long id) {
+    public void DeleteArtist(@PathVariable Long id) {
         artistService.deleteArtist(id);
     }
 
-  /*
 
 
     // MAJ Artist
-    @RequestMapping(value = "", method = RequestMethod.PUT, params={"id", "name"}, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Artist UpdateArtist(@RequestParam Long id,
-                               @RequestParam String name) {
-        Artist updateArtist = artistService.updateArtist(name, id);
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public Artist UpdateArtist(@RequestBody Artist artist) {
+        Artist updateArtist = artistService.updateArtist(artist);
         return updateArtist;
     }
 
-*/
 }
